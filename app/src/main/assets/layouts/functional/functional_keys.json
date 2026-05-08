@@ -17,5 +17,16 @@
     { "label": "space" },
     { "label": "period", "labelFlags": 1073741824 },
     { "label": "action", "width": 0.15 }
+  ],
+  [
+    { "label": "escape", "width": 0.15 },
+    { "label": "tab" },
+    { "label": "ctrl" },
+    { "label": "alt" },
+    { "type": "placeholder" },
+    { "type": "placeholder" },
+    { "label": "arrow_left" },
+    { "label": "arrow_right" },
+    { "type": "placeholder", "width": 0.15 }
   ]
 ]
