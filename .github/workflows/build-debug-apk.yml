@@ -2,6 +2,11 @@ name: Build debug APK
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v3.9-debug)'
+        required: true
+        default: 'v3.9-debug'
 
 jobs:
   build:
@@ -30,6 +35,16 @@ jobs:
         with:
           name: HeliBoard-debug
           path: app/build/outputs/apk/debug/*-debug*.apk
+
+      - name: Create Release and Upload APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          name: "HeliBoard Debug ${{ github.event.inputs.tag }}"
+          files: app/build/outputs/apk/debug/*-debug*.apk
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Archive reports for failed job
         uses: actions/upload-artifact@v4
